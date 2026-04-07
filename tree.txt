@@ -1,302 +1,54 @@
-.
-├── .gitignore
-├── Nexys-Video-HW.xpr.zip
 ├── README.md
-├── doc
-│   └── doc_placeholder.txt
-├── src
-│   ├── constraints
-│   │   ├── NexysVideo_Master.xdc
-│   │   └── vdma_timing_workaround.xdc
-│   ├── custom_IP
-│   │   ├── TWICtl.vhd
-│   │   ├── audio_init.v
-│   │   ├── audio_mux_2to1.v
-│   │   ├── audio_pipeline.v
-│   │   ├── centroid_core.v
-│   │   ├── font_data.mem
-│   │   ├── i2s_ctl.vhd
-│   │   ├── marker_overlay.v
-│   │   ├── overlay_ui.v
-│   │   ├── rgb2hsv.v
-│   │   └── video_dbg_mux.v
-│   ├── external_IP
-│   │   ├── axi_dynclk
-│   │   │   ├── bd
-│   │   │   │   └── bd.tcl
-│   │   │   ├── component.xml
-│   │   │   ├── drivers
-│   │   │   │   └── dynclk
-│   │   │   │       ├── data
-│   │   │   │       │   ├── dynclk.mdd
-│   │   │   │       │   └── dynclk.tcl
-│   │   │   │       └── src
-│   │   │   │           ├── Makefile
-│   │   │   │           ├── ddynclk.c
-│   │   │   │           ├── ddynclk.h
-│   │   │   │           ├── ddynclk_g.c
-│   │   │   │           ├── ddynclk_selftest.c
-│   │   │   │           └── ddynclk_sinit.c
-│   │   │   ├── src
-│   │   │   │   ├── SyncAsync.vhd
-│   │   │   │   ├── axi_dynclk.vhd
-│   │   │   │   ├── axi_dynclk.xdc
-│   │   │   │   ├── axi_dynclk_S00_AXI.vhd
-│   │   │   │   └── mmcme2_drp.v
-│   │   │   └── xgui
-│   │   │       └── axi_dynclk_v1_1.tcl
-│   │   ├── dvi2rgb
-│   │   │   ├── .gitignore
-│   │   │   ├── component.xml
-│   │   │   ├── docs
-│   │   │   │   ├── Advantiv_DGL_1080P_CEA.dat
-│   │   │   │   ├── Advantiv_DGL_1280_1024_CEA.dat
-│   │   │   │   ├── Advantiv_DGL_720P_CEA.dat
-│   │   │   │   ├── dvi2rgb.docx
-│   │   │   │   └── dvi2rgb.pdf
-│   │   │   ├── gui
-│   │   │   │   └── dvi2rgb_v1_0.gtcl
-│   │   │   ├── src
-│   │   │   │   ├── .dvi2rgb.vhd.swp
-│   │   │   │   ├── ChannelBond.vhd
-│   │   │   │   ├── DVI_Constants.vhd
-│   │   │   │   ├── EEPROM_8b.vhd
-│   │   │   │   ├── GlitchFilter.vhd
-│   │   │   │   ├── InputSERDES.vhd
-│   │   │   │   ├── PhaseAlign.vhd
-│   │   │   │   ├── ResyncToBUFG.vhd
-│   │   │   │   ├── SyncAsync.vhd
-│   │   │   │   ├── SyncAsyncReset.vhd
-│   │   │   │   ├── SyncBase.vhd
-│   │   │   │   ├── TMDS_Clocking.vhd
-│   │   │   │   ├── TMDS_Decoder.vhd
-│   │   │   │   ├── TWI_SlaveCtl.vhd
-│   │   │   │   ├── dgl_1080p_cea.data
-│   │   │   │   ├── dgl_1280_1024_cea.data
-│   │   │   │   ├── dgl_720p_cea.data
-│   │   │   │   ├── dvi2rgb.vhd
-│   │   │   │   ├── dvi2rgb.xdc
-│   │   │   │   ├── dvi2rgb_ooc.xdc
-│   │   │   │   ├── ila_pixclk
-│   │   │   │   │   └── ila_pixclk.xci
-│   │   │   │   ├── ila_refclk
-│   │   │   │   │   └── ila_refclk.xci
-│   │   │   │   └── ila_timing_workaround.xdc
-│   │   │   └── xgui
-│   │   │       ├── dvi2rgb_v1_3.tcl
-│   │   │       ├── dvi2rgb_v1_4.tcl
-│   │   │       ├── dvi2rgb_v1_5.tcl
-│   │   │       ├── dvi2rgb_v1_6.tcl
-│   │   │       ├── dvi2rgb_v1_7.tcl
-│   │   │       ├── dvi2rgb_v1_8.tcl
-│   │   │       ├── dvi2rgb_v1_9.tcl
-│   │   │       └── dvi2rgb_v2_0.tcl
-│   │   └── rgb2dvi
-│   │       ├── component.xml
-│   │       ├── docs
-│   │       │   ├── rgb2dvi.docx
-│   │       │   └── rgb2dvi.pdf
-│   │       ├── src
-│   │       │   ├── ClockGen.vhd
-│   │       │   ├── DVI_Constants.vhd
-│   │       │   ├── OutputSERDES.vhd
-│   │       │   ├── SyncAsync.vhd
-│   │       │   ├── SyncAsyncReset.vhd
-│   │       │   ├── TMDS_Encoder.vhd
-│   │       │   ├── rgb2dvi.vhd
-│   │       │   ├── rgb2dvi.xdc
-│   │       │   ├── rgb2dvi_clocks.xdc
-│   │       │   └── rgb2dvi_ooc.xdc
-│   │       └── xgui
-│   │           ├── rgb2dvi_v1_1.tcl
-│   │           ├── rgb2dvi_v1_2.tcl
-│   │           ├── rgb2dvi_v1_3.tcl
-│   │           └── rgb2dvi_v1_4.tcl
-│   ├── system_bd
-│   │   ├── hdmi.bd
-│   │   ├── hdmi_mem_init_files
-│   │   │   ├── Makefile
-│   │   │   ├── ddynclk.h
-│   │   │   ├── dgl_1080p_cea.data
-│   │   │   ├── dgl_1280_1024_cea.data
-│   │   │   ├── dgl_720p_cea.data
-│   │   │   ├── dynclk.mdd
-│   │   │   ├── dynclk.tcl
-│   │   │   ├── hdmi.bda
-│   │   │   ├── mig_b.prj
-│   │   │   ├── xlconcat_v2_1_xlconcat_h.txt
-│   │   │   └── xlslice_v1_0_xlslice.txt
-│   │   ├── hdmi_wrapper.v
-│   │   ├── ip
-│   │   │   ├── hdmi_audio_init_0_0
-│   │   │   │   └── hdmi_audio_init_0_0.xci
-│   │   │   ├── hdmi_audio_mux_2to1_0_0
-│   │   │   │   └── hdmi_audio_mux_2to1_0_0.xci
-│   │   │   ├── hdmi_audio_pipeline_0_0
-│   │   │   │   └── hdmi_audio_pipeline_0_0.xci
-│   │   │   ├── hdmi_auto_ds_0
-│   │   │   │   └── hdmi_auto_ds_0.xci
-│   │   │   ├── hdmi_auto_rs_w_0
-│   │   │   │   └── hdmi_auto_rs_w_0.xci
-│   │   │   ├── hdmi_auto_rs_w_1
-│   │   │   │   └── hdmi_auto_rs_w_1.xci
-│   │   │   ├── hdmi_auto_rs_w_2
-│   │   │   │   └── hdmi_auto_rs_w_2.xci
-│   │   │   ├── hdmi_auto_us_0
-│   │   │   │   └── hdmi_auto_us_0.xci
-│   │   │   ├── hdmi_auto_us_1
-│   │   │   │   └── hdmi_auto_us_1.xci
-│   │   │   ├── hdmi_axi_dynclk_0_0
-│   │   │   │   └── hdmi_axi_dynclk_0_0.xci
-│   │   │   ├── hdmi_axi_gpio_video_0
-│   │   │   │   └── hdmi_axi_gpio_video_0.xci
-│   │   │   ├── hdmi_axi_mem_intercon_0
-│   │   │   │   └── hdmi_axi_mem_intercon_0.xci
-│   │   │   ├── hdmi_axi_timer_0_0
-│   │   │   │   └── hdmi_axi_timer_0_0.xci
-│   │   │   ├── hdmi_axi_uartlite_0_0
-│   │   │   │   └── hdmi_axi_uartlite_0_0.xci
-│   │   │   ├── hdmi_axi_vdma_0_0
-│   │   │   │   └── hdmi_axi_vdma_0_0.xci
-│   │   │   ├── hdmi_centroid_core_1_0
-│   │   │   │   └── hdmi_centroid_core_1_0.xci
-│   │   │   ├── hdmi_centroid_core_1_1
-│   │   │   │   └── hdmi_centroid_core_1_1.xci
-│   │   │   ├── hdmi_clk_wiz_0_0
-│   │   │   │   └── hdmi_clk_wiz_0_0.xci
-│   │   │   ├── hdmi_dlmb_bram_if_cntlr_0
-│   │   │   │   └── hdmi_dlmb_bram_if_cntlr_0.xci
-│   │   │   ├── hdmi_dlmb_v10_0
-│   │   │   │   └── hdmi_dlmb_v10_0.xci
-│   │   │   ├── hdmi_dvi2rgb_0_0
-│   │   │   │   └── hdmi_dvi2rgb_0_0.xci
-│   │   │   ├── hdmi_i2s_ctl_0_0
-│   │   │   │   └── hdmi_i2s_ctl_0_0.xci
-│   │   │   ├── hdmi_ilmb_bram_if_cntlr_0
-│   │   │   │   └── hdmi_ilmb_bram_if_cntlr_0.xci
-│   │   │   ├── hdmi_ilmb_v10_0
-│   │   │   │   └── hdmi_ilmb_v10_0.xci
-│   │   │   ├── hdmi_lmb_bram_0
-│   │   │   │   └── hdmi_lmb_bram_0.xci
-│   │   │   ├── hdmi_m00_regslice_0
-│   │   │   │   └── hdmi_m00_regslice_0.xci
-│   │   │   ├── hdmi_marker_overlay_0_2
-│   │   │   │   └── hdmi_marker_overlay_0_2.xci
-│   │   │   ├── hdmi_mdm_1_0
-│   │   │   │   └── hdmi_mdm_1_0.xci
-│   │   │   ├── hdmi_microblaze_0_0
-│   │   │   │   └── hdmi_microblaze_0_0.xci
-│   │   │   ├── hdmi_microblaze_0_axi_intc_0
-│   │   │   │   └── hdmi_microblaze_0_axi_intc_0.xci
-│   │   │   ├── hdmi_microblaze_0_axi_periph_0
-│   │   │   │   └── hdmi_microblaze_0_axi_periph_0.xci
-│   │   │   ├── hdmi_microblaze_0_xlconcat_0
-│   │   │   │   └── hdmi_microblaze_0_xlconcat_0.xci
-│   │   │   ├── hdmi_mig_7series_0_0
-│   │   │   │   ├── hdmi_mig_7series_0_0.xci
-│   │   │   │   └── mig_b.prj
-│   │   │   ├── hdmi_overlay_ui_0_0
-│   │   │   │   └── hdmi_overlay_ui_0_0.xci
-│   │   │   ├── hdmi_rgb2dvi_0_0
-│   │   │   │   └── hdmi_rgb2dvi_0_0.xci
-│   │   │   ├── hdmi_rgb2hsv_0_0
-│   │   │   │   └── hdmi_rgb2hsv_0_0.xci
-│   │   │   ├── hdmi_rst_mig_7series_0_100M_0
-│   │   │   │   └── hdmi_rst_mig_7series_0_100M_0.xci
-│   │   │   ├── hdmi_rst_mig_7series_0_pxl_0
-│   │   │   │   └── hdmi_rst_mig_7series_0_pxl_0.xci
-│   │   │   ├── hdmi_s00_regslice_0
-│   │   │   │   └── hdmi_s00_regslice_0.xci
-│   │   │   ├── hdmi_s01_regslice_0
-│   │   │   │   └── hdmi_s01_regslice_0.xci
-│   │   │   ├── hdmi_s02_regslice_0
-│   │   │   │   └── hdmi_s02_regslice_0.xci
-│   │   │   ├── hdmi_s03_regslice_0
-│   │   │   │   └── hdmi_s03_regslice_0.xci
-│   │   │   ├── hdmi_v_axi4s_vid_out_0_0
-│   │   │   │   └── hdmi_v_axi4s_vid_out_0_0.xci
-│   │   │   ├── hdmi_v_tc_0_0
-│   │   │   │   └── hdmi_v_tc_0_0.xci
-│   │   │   ├── hdmi_v_tc_1_0
-│   │   │   │   └── hdmi_v_tc_1_0.xci
-│   │   │   ├── hdmi_v_vid_in_axi4s_0_0
-│   │   │   │   └── hdmi_v_vid_in_axi4s_0_0.xci
-│   │   │   ├── hdmi_video_dbg_mux_0_0
-│   │   │   │   └── hdmi_video_dbg_mux_0_0.xci
-│   │   │   ├── hdmi_xbar_0
-│   │   │   │   └── hdmi_xbar_0.xci
-│   │   │   ├── hdmi_xbar_1
-│   │   │   │   └── hdmi_xbar_1.xci
-│   │   │   ├── hdmi_xlconcat_0_0
-│   │   │   │   └── hdmi_xlconcat_0_0.xci
-│   │   │   ├── hdmi_xlconstant_0_0
-│   │   │   │   └── hdmi_xlconstant_0_0.xci
-│   │   │   ├── hdmi_xlconstant_1_0
-│   │   │   │   └── hdmi_xlconstant_1_0.xci
-│   │   │   ├── hdmi_xlconstant_1_1
-│   │   │   │   └── hdmi_xlconstant_1_1.xci
-│   │   │   ├── hdmi_xlconstant_1_2
-│   │   │   │   └── hdmi_xlconstant_1_2.xci
-│   │   │   ├── hdmi_xlconstant_2_0
-│   │   │   │   └── hdmi_xlconstant_2_0.xci
-│   │   │   ├── hdmi_xlconstant_3_0
-│   │   │   │   └── hdmi_xlconstant_3_0.xci
-│   │   │   ├── hdmi_xlconstant_4_0
-│   │   │   │   └── hdmi_xlconstant_4_0.xci
-│   │   │   ├── hdmi_xlslice_0_0
-│   │   │   │   └── hdmi_xlslice_0_0.xci
-│   │   │   ├── hdmi_xlslice_0_1
-│   │   │   │   └── hdmi_xlslice_0_1.xci
-│   │   │   ├── hdmi_xlslice_0_2
-│   │   │   │   └── hdmi_xlslice_0_2.xci
-│   │   │   ├── hdmi_xlslice_3_0
-│   │   │   │   └── hdmi_xlslice_3_0.xci
-│   │   │   ├── hdmi_xlslice_3_1
-│   │   │   │   └── hdmi_xlslice_3_1.xci
-│   │   │   ├── hdmi_xlslice_4_0
-│   │   │   │   └── hdmi_xlslice_4_0.xci
-│   │   │   ├── hdmi_xpm_cdc_gen_0_0
-│   │   │   │   └── hdmi_xpm_cdc_gen_0_0.xci
-│   │   │   ├── hdmi_xpm_cdc_gen_0_1
-│   │   │   │   └── hdmi_xpm_cdc_gen_0_1.xci
-│   │   │   ├── hdmi_xpm_cdc_gen_1_0
-│   │   │   │   └── hdmi_xpm_cdc_gen_1_0.xci
-│   │   │   ├── hdmi_xpm_cdc_gen_1_1
-│   │   │   │   └── hdmi_xpm_cdc_gen_1_1.xci
-│   │   │   ├── hdmi_xpm_cdc_gen_2_0
-│   │   │   │   └── hdmi_xpm_cdc_gen_2_0.xci
-│   │   │   ├── hdmi_xpm_cdc_gen_3_0
-│   │   │   │   └── hdmi_xpm_cdc_gen_3_0.xci
-│   │   │   ├── hdmi_xpm_cdc_gen_5_0
-│   │   │   │   └── hdmi_xpm_cdc_gen_5_0.xci
-│   │   │   ├── hdmi_xpm_cdc_gen_5_1
-│   │   │   │   └── hdmi_xpm_cdc_gen_5_1.xci
-│   │   │   ├── hdmi_xpm_cdc_gen_6_0
-│   │   │   │   └── hdmi_xpm_cdc_gen_6_0.xci
-│   │   │   └── hdmi_xpm_cdc_gen_7_0
-│   │   │       └── hdmi_xpm_cdc_gen_7_0.xci
-│   │   └── ui
-│   │       └── bd_8da6e6f8.ui
-│   └── vitis_sdk
-│       ├── display_ctrl
-│       │   ├── display_ctrl.c
-│       │   ├── display_ctrl.h
-│       │   └── vga_modes.h
-│       ├── dynclk
-│       │   ├── dynclk.c
-│       │   └── dynclk.h
-│       ├── intc
-│       │   ├── intc.c
-│       │   └── intc.h
-│       ├── lscript.ld
-│       ├── timer_ps
-│       │   ├── timer_ps.c
-│       │   └── timer_ps.h
-│       ├── video_capture
-│       │   ├── video_capture.c
-│       │   └── video_capture.h
-│       ├── video_demo.c
-│       └── video_demo.h
-└── tree.txt
-
-107 directories, 192 files
+└── src
+    ├── Nexys-Video-HW               	# Main Vivado 2024.1 Directory
+    │   ├── Nexys-Video-HW.board
+    │   │   └── nexys_video/...
+    │   ├── Nexys-Video-HW.gen/...   	 # Generated Block Diagram
+    │   ├── Nexys-Video-HW.ipdefs
+    │   │   └── repo
+    │   │       └── vivado-library
+    │   │           └── ip		# External IP	
+    │   │               ├── axi_dynclk/... # Generated Clock (DO NOT RESYNTHESIZE)
+    │   │               ├── dvi2rgb/...
+    │   │               └── rgb2dvi/...
+    │   ├── Nexys-Video-HW.srcs
+    │   │   ├── constrs_1  		# Main constraints file
+    │   │   │   ├── NexysVideo_Master.xdc
+    │   │   │   └── vdma_timing_workaround.xdc
+    │   │   ├── sources_1
+    │   │   │   ├── bd			# Block diagram with HDMI IP
+    │   │   │   │   └── hdmi
+    │   │   │   │       └── ip/...
+    │   │   │   ├── imports  		# Imported HDMI wrapper
+    │   │   │   │   └── hdl
+    │   │   │   │       └── hdmi_wrapper.v
+    │   │   │   └── new			# Custom IP
+    │   │   │       ├── TWICtl.vhd
+    │   │   │       ├── audio_init.v
+    │   │   │       ├── audio_mux_2to1.v
+    │   │   │       ├── centroid_core.v
+    │   │   │       ├── font_data.mem
+    │   │   │       ├── i2s_ctl.vhd
+    │   │   │       ├── overlay_ui.v
+    │   │   │       ├── rgb2hsv.v
+    │   │   │       └── video_dbg_mux.v
+    │   │   └── utils_1
+    │   │       └── imports
+    │   │           └── synth_1
+    │   │               └── hdmi_wrapper.dcp
+    │   └── Nexys-Video-HW.tcl
+    └── Vitis-SDK-Files				# MicroBlaze Processor Code Project
+        └── Nexys-Video-HDMI
+            ├── .cproject
+            ├── .project
+            ├── Nexys-Video-HDMI.prj 	# main project file
+            ├── _ide/...
+            └── src				# Imported external libraries for project
+                ├── display_ctrl/...
+                ├── dynclk/...
+                ├── intc/...
+                ├── lscript.ld
+                ├── timer_ps/...
+                ├── video_capture/...
+                ├── video_demo.c 	 # Main C file
+                └── video_demo.h 
