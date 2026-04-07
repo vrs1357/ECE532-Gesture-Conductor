@@ -1,54 +1,57 @@
-├── README.md
-└── src
-    ├── Nexys-Video-HW               	# Main Vivado 2024.1 Directory
-    │   ├── Nexys-Video-HW.board
-    │   │   └── nexys_video/...
-    │   ├── Nexys-Video-HW.gen/...   	 # Generated Block Diagram
-    │   ├── Nexys-Video-HW.ipdefs
-    │   │   └── repo
-    │   │       └── vivado-library
-    │   │           └── ip		# External IP	
-    │   │               ├── axi_dynclk/... # Generated Clock (DO NOT RESYNTHESIZE)
-    │   │               ├── dvi2rgb/...
-    │   │               └── rgb2dvi/...
-    │   ├── Nexys-Video-HW.srcs
-    │   │   ├── constrs_1  		# Main constraints file
-    │   │   │   ├── NexysVideo_Master.xdc
-    │   │   │   └── vdma_timing_workaround.xdc
-    │   │   ├── sources_1
-    │   │   │   ├── bd			# Block diagram with HDMI IP
-    │   │   │   │   └── hdmi
-    │   │   │   │       └── ip/...
-    │   │   │   ├── imports  		# Imported HDMI wrapper
-    │   │   │   │   └── hdl
-    │   │   │   │       └── hdmi_wrapper.v
-    │   │   │   └── new			# Custom IP
-    │   │   │       ├── TWICtl.vhd
-    │   │   │       ├── audio_init.v
-    │   │   │       ├── audio_mux_2to1.v
-    │   │   │       ├── centroid_core.v
-    │   │   │       ├── font_data.mem
-    │   │   │       ├── i2s_ctl.vhd
-    │   │   │       ├── overlay_ui.v
-    │   │   │       ├── rgb2hsv.v
-    │   │   │       └── video_dbg_mux.v
-    │   │   └── utils_1
-    │   │       └── imports
-    │   │           └── synth_1
-    │   │               └── hdmi_wrapper.dcp
-    │   └── Nexys-Video-HW.tcl
-    └── Vitis-SDK-Files				# MicroBlaze Processor Code Project
-        └── Nexys-Video-HDMI
-            ├── .cproject
-            ├── .project
-            ├── Nexys-Video-HDMI.prj 	# main project file
-            ├── _ide/...
-            └── src				# Imported external libraries for project
-                ├── display_ctrl/...
-                ├── dynclk/...
-                ├── intc/...
-                ├── lscript.ld
-                ├── timer_ps/...
-                ├── video_capture/...
-                ├── video_demo.c 	 # Main C file
-                └── video_demo.h 
+
+|-- README.md
+|-- doc			# Documents for submission
+|   |-- demo_presentation.pdf
+|   `-- report.pdf
+|-- src
+|   |-- Nexys-Video-HW			# Main Vivado 2024.1 Directory
+|   |   |-- Nexys-Video-HW.board
+|   |   |   `-- nexys_video/...  # Board Files
+|   |   |-- Nexys-Video-HW.gen/...	# Generated Block Diagram
+|   |   |-- Nexys-Video-HW.ipdefs
+|   |   |   `-- repo
+|   |   |       `-- vivado-library
+|   |   |           `-- ip		# External IP
+|   |   |               |-- axi_dynclk/...  # Generated Clock (DO NOT RESYNTHESIZE)
+|   |   |               |-- dvi2rgb/...
+|   |   |               `-- rgb2dvi/...           
+|   |   |-- Nexys-Video-HW.srcs
+|   |   |   |-- constrs_1		# Main Constraints Files
+|   |   |   |   |-- NexysVideo_Master.xdc
+|   |   |   |   `-- vdma_timing_workaround.xdc
+|   |   |   |-- sources_1
+|   |   |   |   |-- bd			# Block Diagram with HDMI IP
+|   |   |   |   |   `-- hdmi
+|   |   |   |   |       `-- ip/...
+|   |   |   |   |-- imports
+|   |   |   |   |   `-- hdl
+|   |   |   |   |       `-- hdmi_wrapper.v
+|   |   |   |   `-- new			# Custom IP
+|   |   |   |       |-- TWICtl.vhd
+|   |   |   |       |-- audio_init.v
+|   |   |   |       |-- audio_mux_2to1.v
+|   |   |   |       |-- centroid_core.v
+|   |   |   |       |-- font_data.mem
+|   |   |   |       |-- i2s_ctl.vhd
+|   |   |   |       |-- overlay_ui.v
+|   |   |   |       |-- rgb2hsv.v
+|   |   |   |       `-- video_dbg_mux.v
+|   |   |   `-- utils_1
+|   |   |       `-- imports
+|   |   |           `-- synth_1
+|   |   |               `-- hdmi_wrapper.dcp
+|   |   `-- Nexys-Video-HW.tcl
+|   `-- Vitis-SDK-Files			# MicroBlaze Processor Code Project
+|       `-- Nexys-Video-HDMI
+|           |-- Nexys-Video-HDMI.prj  # Main Project File
+|           |-- _ide/...
+|           `-- src			# Imported External Libraries for Project
+|               |-- display_ctrl/...
+|               |-- dynclk/...
+|               |-- intc/...
+|               |-- lscript.ld
+|               |-- timer_ps/...
+|               |-- video_capture/...
+|               |-- video_demo.c	# Main C File
+|               `-- video_demo.h
+
